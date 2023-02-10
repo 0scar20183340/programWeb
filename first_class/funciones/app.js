@@ -17,10 +17,10 @@
 // logGreenting(greetMe);
 
 
-//REFACTORIZACION DE FUNCTION CALLBACK
+// REFACTORIZACION DE FUNCTION CALLBACK
 let greet = () => console.log("Hola Mundo");
 let logGreenting = fn => fn();
-let greetMe = ()=> console.log("Hello desde la expresion de la funcion");
+let greetMe = () => console.log("Hello desde la expresion de la funcion");
 
 greet();
 logGreenting(greet);
