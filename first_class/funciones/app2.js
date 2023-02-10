@@ -24,5 +24,6 @@ let color="rojo";
 let talla="M";
 let modelo="Clasico";
 
+//Utilizar nuevas comillas
 console.log("Juan tiene una playera talla " + talla + " de color " + color + " modelo " + modelo);
 console.log(`Juan tiene una playera talla ${talla} de color ${color} modelo ${modelo}`);
