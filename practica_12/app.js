@@ -7,24 +7,20 @@ app.use('/assets',express.static(__dirname + '/public'));
 
 // el .PORT indica que si hay un puerto disponible habra ese puerto, sino que habra el puerto 3000
 let port = process.env.PORT || 3000;
+app.use('/', function(req, res, next){
+    console.log('Request Url:' + req.url);
+    next();
+})
 
-// esto se mostrara en el host raiz las demas rutas como /api y /perso...  tendran otro contenido
+
+//especificar que el templade engine sera ejs
+app.set('view engine', 'ejs');
+
+// La función app.render() se usa para renderizar HTML de una vista 
+// a través de la función de devolución de llamada. 
+// Esta función devuelve el html en la función de devolución de llamada.
 app.get('/', function(req, res){
-    cad = `
-    <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="/assets/style.css" type="text/css" rel="stylesheet">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
-</html>`
-    res.send(cad);
+  res.render('index');
 });
 
 //manda con el formato Json un objeto y no un texto
@@ -35,7 +31,7 @@ app.get('/api', function(req, res){
 
 //el requ.params utiliza el .id y lo convuerte en una ruta
 app.get('/person/:id', function(req, res){
-    res.send(`<html><head></head><body><h1>Person:` + req.params.id +`</h1></body></html>`)
+    res.render('person', {ID: req.params.id});
 });
 
 app.listen(port);
